@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Add a New Poll</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+ <header>
+   <h1>
+     Create a New Poll
+   </h1>
+ </header>
+  <section class='main'>
+    <form action="/api" method="post">
+      <label for="question">Poll Question</label>
+      <input type="text" name="question" id="question" placeholder="What do you want your poll to ask?">
+      <label for="author">Author</label>
+      <input type="text" name="author" id="author" placeholder="Author">
+      <label for=""></label>
+
+    </form>
+
+    
+  </section>
+  
+  <footer>
+      <p>Made with Node + MongoDB</p>
+  </footer>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
