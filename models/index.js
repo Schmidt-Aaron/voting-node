@@ -8,4 +8,4 @@ mongoose.connect('mongodb://localhost:27017/voting-node');
 
 mongoose.Promise = Promise;
 
-module.exports.Voting = require('./polls');
+module.exports.Poll = require('./polls');
