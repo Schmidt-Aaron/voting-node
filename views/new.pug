@@ -1,8 +1,24 @@
 extends layout.pug
 
 block content
-  h1 test
+ section.main
+  h2 Create a New Poll
+  form(action="/api" method="post")
+    label(for="question") Poll Question
+    input(type="text" name="question" id="question" placeholder="What do you want your poll to ask?")
+    label(for="author") Author
+    input(type="text" name="author" id="author" placeholder="Author" value="anonymous")
+    p Poll Choices
+    .choices
+      .choice
+        label(for="choice1") Choice #1
+        input(type="text" name="choices[]" id="option1")
+      .choice
+        label(for="choice2") Choice #2
+        input(type="text" name="choices[]" id="option2")
+    p.addChoice Add Another Choice
+    button(type="submit") Submit
 
 block scripts
   script(src='https://unpkg.com/axios/dist/axios.min.js')
-  script(src='../public/addPoll.js')
+  script(src='/addPoll.js')

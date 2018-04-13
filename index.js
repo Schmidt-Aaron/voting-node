@@ -28,7 +28,8 @@ app.use('/poll', pollRoutes);
 
 //add new polls 
 app.use('/new', (req, res) => {
-  res.sendFile("views/new.html", { root: __dirname});
+  // res.sendFile("views/new.html", { root: __dirname});
+  res.render('new');
 })
 
 const listener = app.listen(port, () => {
