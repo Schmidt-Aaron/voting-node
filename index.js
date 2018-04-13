@@ -2,15 +2,19 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
-const routes = require('./routes/voting');
+const apiRoutes = require('./routes/voting');
+const pollRoutes = require('./routes/poll')
 
 //static files
 app.use(express.static(__dirname + '/public'))
 app.use(express.static(__dirname + '/views'))
 
+
 //middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.set('view engine', 'pug')
 
 //route root
 app.get('/', (req, res) => {
@@ -18,7 +22,8 @@ app.get('/', (req, res) => {
 })
 
 //API routes
-app.use('/api', routes);
+app.use('/api', apiRoutes);
+app.use('/poll', pollRoutes);
 
 //add new polls 
 app.use('/new', (req, res) => {
