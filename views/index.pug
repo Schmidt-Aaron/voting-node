@@ -1,0 +1,11 @@
+extends layout.pug
+
+
+block content
+  section.main
+    h2 Current Polls
+    ul.polls
+
+block scripts
+  script(src='https://unpkg.com/axios/dist/axios.min.js')
+  script(src='/app.js')

@@ -1,15 +1,13 @@
-html
-  head
-    title= title
-  body
-    header
-      h1 Poll: #{question}
+extends layout.pug
+
+block content      
   .main
+    h1 Poll: #{question}
     p By #{author}
     p Options:
       each choice in choices
         .choice
           p Choice: #{choice.choiceText}  #[span Votes: #{choice.votes}]
 
-
+block scripts
 

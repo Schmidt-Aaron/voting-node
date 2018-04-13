@@ -18,7 +18,8 @@ app.set('view engine', 'pug')
 
 //route root
 app.get('/', (req, res) => {
-  res.sendFile("index.html")
+  //res.sendFile("index.html")
+  res.render('index')
 })
 
 //API routes
