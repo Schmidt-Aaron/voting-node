@@ -20,6 +20,11 @@ app.get('/', (req, res) => {
 //API routes
 app.use('/api', routes);
 
+//add new polls 
+app.use('/new', (req, res) => {
+  res.sendFile("views/new.html", { root: __dirname});
+})
+
 const listener = app.listen(port, () => {
   console.log(`Now running on ${port}`);
 })

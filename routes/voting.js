@@ -13,7 +13,21 @@ router.get('/', (req, res) => {
 
 //post a poll
 router.post('/',  (req, res) => {
-  db.Poll.create(req.body)
+  let formData = req.body;
+  let pollBody = {
+    question: formData.question,
+    author: formData.author,
+    choices: [
+      {
+        choiceText: formData.option1, 
+      },
+      {
+        choiceText: formData.option2, 
+      },
+    ]
+  }
+
+  db.Poll.create(pollBody)
     .then((newPoll) => {
       res.status(201)
         .json(newPoll);
