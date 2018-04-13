@@ -19,7 +19,7 @@ app.set('view engine', 'pug')
 //route root
 app.get('/', (req, res) => {
   //res.sendFile("index.html")
-  res.render('index')
+  res.render('index', { pageTitle: "Welcome to the Amazing Poll Machine"})
 })
 
 //API routes
@@ -29,7 +29,7 @@ app.use('/poll', pollRoutes);
 //add new polls 
 app.use('/new', (req, res) => {
   // res.sendFile("views/new.html", { root: __dirname});
-  res.render('new');
+  res.render('new', { pageTitle: 'Add a New Poll!'});
 })
 
 const listener = app.listen(port, () => {

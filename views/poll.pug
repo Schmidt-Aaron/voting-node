@@ -7,7 +7,7 @@ block content
     p Options:
       each choice in choices
         .choice
-          p Choice: #{choice.choiceText}  #[span Votes: #{choice.votes}]
+          p Choice: #{choice.choiceText}  #[span.votes Votes: #{choice.votes}]
 
 block scripts
-
+  script(src="/poll.js")

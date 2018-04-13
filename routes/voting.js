@@ -59,4 +59,9 @@ router.delete('/:pollID', (req, res) => {
     .catch(err => res.send(err))
 })
 
+router.put('/:pollID', (req, res) => {
+  //make call to db
+  
+})
+
 module.exports = router;
