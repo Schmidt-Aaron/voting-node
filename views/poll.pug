@@ -3,8 +3,13 @@ html
     title= title
   body
     header
-      h1= question
+      h1 Poll: #{question}
   .main
-    p= author 
+    p By #{author}
+    p Options:
+      each choice in choices
+        .choice
+          p Choice: #{choice.choiceText}  #[span Votes: #{choice.votes}]
+
 
 

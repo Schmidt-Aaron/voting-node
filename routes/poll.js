@@ -15,10 +15,11 @@ const db = require('../models');
 router.get('/:id', (req, res) => {
   db.Poll.findById(req.params.id)
   .then((poll) => {
-    console.log(poll)
+    console.log(poll.choices.length)
         let pollObj = {
           question: poll.question,
           author: poll.author,
+          choices: poll.choices,
         };
         res.render('poll', pollObj )
   })

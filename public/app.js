@@ -16,7 +16,9 @@ const parsePolls = (polls) => {
 
 //post single poll to page
 const postPoll = (poll) => {
-  //console.log(poll)
+  const link = document.createElement('a');
+  link.setAttribute('href', `/poll/${poll._id}`)
+
   const listItem = document.createElement('li');
   
   //data-id to api calls
@@ -24,7 +26,8 @@ const postPoll = (poll) => {
   let singlePoll = `${poll.question} <span class="delete">X</span>`;
   listItem.innerHTML = singlePoll;
 
-  pollList.appendChild(listItem);
+  link.appendChild(listItem);
+  pollList.appendChild(link);
 }
 
 const deletePoll = (e) => {
