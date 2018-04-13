@@ -27,5 +27,6 @@ const postPoll = (poll) => {
   pollList.appendChild(listItem);
 }
 
+
 //fire our polls function on page load
 window.addEventListener('load', getPolls )

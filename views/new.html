@@ -19,11 +19,20 @@
       <input type="text" name="question" id="question" placeholder="What do you want your poll to ask?">
       <label for="author">Author</label>
       <input type="text" name="author" id="author" placeholder="Author">
+      
       <p>Poll Choices</p>
-      <label for="choice1">What is the first choice?</label>
-      <input type="text" name="option1" id="option1">
-      <label for="choice2">What is the second choice?</label>
-      <input type="text" name="option2" id="option2">
+      <div class="choices">
+        <div class="choice">
+          <label for="choice1">Choice #1?</label>
+          <input type="text" name="choices[]" id="option1">
+        </div>
+        <div class="choice">
+          <label for="choice2">Choice #2?</label>
+          <input type="text" name="choices[]" id="option2">
+        </div>
+      </div>
+      <p class="addChoice">Add another Choice</p>
+
       <button type="submit">Submit</button>
     </form>
 
@@ -34,6 +43,6 @@
       <p>Made with Node + MongoDB</p>
   </footer>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="/app.js"></script>
+  <script src="/addPoll.js"></script>
 </body>
 </html>
