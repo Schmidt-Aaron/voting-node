@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -6,6 +10,7 @@ body {
   padding: 0;
   margin-left: 1rem;
   margin-right: 1rem;
+
 }
 
 header {
@@ -30,6 +35,33 @@ header h1 {
 .main {
   align-self: center;
 }
+
+.polls {
+  min-width: 600px;
+}
+
+.polls li {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+.polls li .delete {
+  float: right;
+  margin-right: 1rem;
+  opacity: 0.25;
+  transition: 0.5s;
+}
+
+.polls li:hover {
+  background: lightgray;
+  cursor: pointer;
+}
+
+.polls li:hover .delete {
+  opacity: 1;
+  color: red;
+}
+
 
 footer {
   align-self: center;

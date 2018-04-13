@@ -16,17 +16,34 @@ const parsePolls = (polls) => {
 
 //post single poll to page
 const postPoll = (poll) => {
-  console.log(poll)
+  //console.log(poll)
   const listItem = document.createElement('li');
   
   //data-id to api calls
   listItem.setAttribute('data-id', poll._id);
-  let singlePoll = poll.question;
+  let singlePoll = `${poll.question} <span class="delete">X</span>`;
   listItem.innerHTML = singlePoll;
 
   pollList.appendChild(listItem);
 }
 
+const deletePoll = (e) => {
+  let poll = e.target;
+  let id = poll.parentElement.getAttribute('data-id');
+  if(poll.className === 'delete') {
+
+    axios.delete(`/api/${id}`)
+      .then(res => {
+        console.log(res.data);
+        poll.parentElement.parentElement.removeChild(poll.parentElement);
+      })
+      .catch(err => console.log(err))
+  }
+
+}
+
+
+pollList.addEventListener('click', deletePoll)
 
 //fire our polls function on page load
 window.addEventListener('load', getPolls )
