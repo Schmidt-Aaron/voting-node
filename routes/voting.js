@@ -30,7 +30,7 @@ router.post('/',  (req, res) => {
     author: formData.author,
     choices: pollChoices,
   }
-  
+
   db.Poll.create(pollBody)
     .then((newPoll) => {
       res.status(201)
@@ -44,6 +44,17 @@ router.get('/:pollID', (req, res) => {
   db.Poll.findById(req.params.pollID)
     .then((poll) => {
       res.json(poll)
+    })
+    .catch(err => res.send(err))
+})
+
+//delete a poll
+router.delete('/:pollID', (req, res) => {
+  db.Poll.deleteOne(
+    { _id: req.params.pollID }
+  )
+    .then(() => {
+      res.json(`${req.params.pollID} was deleted.`)
     })
     .catch(err => res.send(err))
 })

@@ -8,17 +8,25 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
- <header>
-   <h1>
-     Create a New Poll
-   </h1>
- </header>
+
+  <header>
+      <h1>
+        Poll Machine
+      </h1>
+      <nav role="navigation">
+        <span><a href="/">Home</a></span>
+        <span><a href="/new">Add a Poll</a></span>
+        <span><a href="#">Sign in</a></span>
+      </nav>
+    </header>
+
   <section class='main'>
+    <h2>Create a New Poll</h2>
     <form action="/api" method="post">
       <label for="question">Poll Question</label>
       <input type="text" name="question" id="question" placeholder="What do you want your poll to ask?">
       <label for="author">Author</label>
-      <input type="text" name="author" id="author" placeholder="Author">
+      <input type="text" name="author" id="author" placeholder="Author" value="anonymous">
       
       <p>Poll Choices</p>
       <div class="choices">

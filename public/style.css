@@ -1,3 +1,36 @@
-h1 {
-  color: red;
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav span {
+  margin-left: 2rem;
+}
+
+header nav a {
+  text-decoration: none;
+  text-transform: capitalize;
+  color: black;
+}
+
+header h1 {
+  color: rgb(32, 57, 199);
+}
+.main {
+  align-self: center;
+}
+
+footer {
+  align-self: center;
 }
