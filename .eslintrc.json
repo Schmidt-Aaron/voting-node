@@ -1,3 +1,11 @@
 {
-  "extends": ["airbnb"]
+  "extends": ["airbnb", "prettier"],
+
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+    "no-undef": "warn",
+    "no-undefined": 0,
+    "linebreak-style": [0, "windows"],
+    "no-underscore-dangle": "warn"
+  }
 }
