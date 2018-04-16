@@ -5,9 +5,13 @@ block content
     h1 Poll: #{question}
     p By #{author}
     p Options:
-      each choice in choices
-        .choice
-          p Choice: #{choice.choiceText}  #[span.votes Votes: #{choice.votes}]
+      ol
+        each choice in choices
+          - let name = choice.choiceText;
+          - name = name[0].toUpperCase() + name.substr(1);
+          .choice
+            li #{name}  #[span.votes Votes: #{choice.votes}]
+          
 
 block scripts
   script(src="/poll.js")

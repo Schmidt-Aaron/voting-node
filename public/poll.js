@@ -1,5 +1,7 @@
 const vote = e => {
-  console.log(e);
+  const parent = e.target.parentElement.innerHTML;
+
+  console.log(parent);
 };
 
 const voteNodes = document.querySelectorAll('.votes');

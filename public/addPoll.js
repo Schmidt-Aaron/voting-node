@@ -1,6 +1,7 @@
 const additionalChoice = () => {
   const choiceNum = document.querySelectorAll('.choice').length + 1;
   const target = document.querySelector('.choices');
+
   // parent
   const choiceDiv = document.createElement('div');
   choiceDiv.classList.add('choice');

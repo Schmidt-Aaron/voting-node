@@ -10,7 +10,7 @@ Built with:
 * ?? for data visualization (not added yet)
 * Eslint (dev only)
 * Prettier (dev only)
-* Webpack (dev only)
+* Webpack (dev only, not added yet)
 
 Functionality:
 
