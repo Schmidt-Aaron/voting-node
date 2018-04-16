@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-//fail gracefully
+// fail gracefully
 mongoose.set('debug', true);
 
-//db location
+// db location
 mongoose.connect('mongodb://localhost:27017/voting-node');
 
 mongoose.Promise = Promise;

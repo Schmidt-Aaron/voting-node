@@ -1,37 +1,39 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 3000;
 const apiRoutes = require('./routes/voting');
-const pollRoutes = require('./routes/poll')
+const pollRoutes = require('./routes/poll');
+const path = require('path');
 
-//static files
-app.use(express.static(__dirname + '/public'))
-app.use(express.static(__dirname + '/views'))
+const app = express();
+const port = process.env.PORT || 3000;
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
-//middlewares
+// static files
+app.use(express.static(path.join(__dirname, '/public')));
+// app.use(express.static(path.join(__dirname, '/views')));
+
+// middlewares
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set('view engine', 'pug')
-
-//route root
+// route root
 app.get('/', (req, res) => {
-  //res.sendFile("index.html")
-  res.render('index', { pageTitle: "Welcome to the Amazing Poll Machine"})
-})
+  // res.sendFile("index.html")
+  res.render('index', { pageTitle: 'Welcome to the Amazing Poll Machine' });
+});
 
-//API routes
+// API routes
 app.use('/api', apiRoutes);
 app.use('/poll', pollRoutes);
 
-//add new polls 
+// add new polls
 app.use('/new', (req, res) => {
   // res.sendFile("views/new.html", { root: __dirname});
-  res.render('new', { pageTitle: 'Add a New Poll!'});
-})
+  res.render('new', { pageTitle: 'Add a New Poll!' });
+});
 
-const listener = app.listen(port, () => {
+app.listen(port, () => {
   console.log(`Now running on ${port}`);
-})
+});
