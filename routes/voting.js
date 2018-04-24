@@ -59,9 +59,11 @@ router.delete('/:pollID', (req, res) => {
     .catch(err => res.send(err));
 });
 
-router.put('/:pollID', (req, res) => {
+// vote on a poll
+router.post('/:pollID', (req, res) => {
   // make call to db
   console.log(req.body);
+  const ID = req.params.pollID;
   // db.Poll.update({ _id: id })
 });
 

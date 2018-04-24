@@ -4,13 +4,13 @@ const db = require('../models');
 const router = express.Router();
 
 // helper functions
-// const findPoll = id => {
-//   db.Poll.findById(id)
-//     .then((poll) => {
-//       return poll;
-//     })
-//     .catch(err => console.log(err))
-// }
+const findPoll = id => {
+  db.Poll.findById(id)
+    .then(poll => {
+      return poll;
+    })
+    .catch(err => console.log(err));
+};
 
 router.get('/:id', (req, res) => {
   db.Poll.findById(req.params.id).then(poll => {
@@ -19,6 +19,7 @@ router.get('/:id', (req, res) => {
       question: poll.question,
       author: poll.author,
       choices: poll.choices,
+      pollID: req.params.id,
     };
     res.render('poll', pollObj);
   });

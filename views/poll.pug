@@ -5,13 +5,19 @@ block content
     h1 Poll: #{question}
     p By #{author}
     p Options:
-      ol
-        each choice in choices
-          - let name = choice.choiceText;
-          - name = name[0].toUpperCase() + name.substr(1);
-          .choice
-            li #{name}  #[span.votes Votes: #{choice.votes}]
+      form( action=`../api/${pollID}` method="post")
+        p What do you think?
+        .choices
+          each choice, index in choices
+            - let name = choice.choiceText;
+            - name = name[0].toUpperCase() + name.substr(1);
+            .choice
+              input(type="radio" id=index name="choice" value= [index, name])
+              label(for=name) #{name}
+              //- li #{name}  #[span.votes Votes: #{choice.votes}]
+        button(type="submit") Vote!
           
 
 block scripts
+  script(src='https://unpkg.com/axios/dist/axios.min.js')
   script(src="/poll.js")
