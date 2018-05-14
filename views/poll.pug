@@ -8,14 +8,13 @@ block content
       form( action=`../api/${pollID}` method="post")
         p What do you think?
         .choices
-        - console.log(choices);
-          each choice, index in choices
+        - let choiceArr = choices.split(" ");
+          each choice, index in choiceArr
             - let name = choice;
             - let formattedName = name[0].toUpperCase() + name.substr(1);
             .choice
               input(type="radio" id=index name="choice" value=name)
               label(for=name) #{formattedName}
-              //- li #{name}  #[span.votes Votes: #{choice.votes}]
         button(type="submit") Vote!
     .chart
       canvas(id="chartImage" width="400" height="400")
@@ -26,8 +25,7 @@ block scripts
   script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js')
   script(src="/poll.js")
   script.
-    console.log([#{choices}], [#{votes}]);
-    let pollChoices = [#{choices}];
+    let pollChoices = "#{choices}".split(" ");
     let pollVotes = [#{votes}];
     let numberChoices = pollChoices.length;
     let backgroundColors = [];

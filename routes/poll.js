@@ -15,12 +15,16 @@ const findPoll = id => {
 router.get('/:id', (req, res) => {
   db.Poll.findById(req.params.id).then(poll => {
 
-    let choices = [];
+    let choices = '';
     let votes = [];
 
-    poll.choices.forEach((item) => {
+    poll.choices.forEach((item, i) => {
       votes.push(item.votes);
-      choices.push(item.choiceText);
+      choices += item.choiceText;
+      // add spaces to string - will be split in template
+      if(i !== poll.choices.length - 1) {
+        choices += " ";
+      }
     })
 
     const pollObj = {
