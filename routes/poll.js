@@ -31,7 +31,6 @@ router.get('/:id', (req, res) => {
       votes,
       pollID: req.params.id,
     };
-    console.log(pollObj);
     res.render('poll', pollObj);
   });
 });
