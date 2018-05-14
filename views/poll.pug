@@ -10,14 +10,17 @@ block content
         .choices
           each choice, index in choices
             - let name = choice.choiceText;
-            - name = name[0].toUpperCase() + name.substr(1);
+            - formattedName = name[0].toUpperCase() + name.substr(1);
             .choice
-              input(type="radio" id=index name="choice" value= [index, name])
-              label(for=name) #{name}
+              input(type="radio" id=index name="choice" value=name)
+              label(for=name) #{formattedName}
               //- li #{name}  #[span.votes Votes: #{choice.votes}]
         button(type="submit") Vote!
+    .chart
+      canvas(id="chartImage" width="400" height="400")
           
 
 block scripts
   script(src='https://unpkg.com/axios/dist/axios.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js')
   script(src="/poll.js")

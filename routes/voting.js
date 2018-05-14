@@ -35,8 +35,8 @@ router.post('/', (req, res) => {
   db.Poll.create(pollBody)
     .then(newPoll => {
       // res.status(201).json(newPoll); // uncomment to see json response
-      console.log(newPoll);
-      res.redirect('/');
+      // console.log(newPoll);
+      res.redirect('./');
     })
     .catch(err => res.send(err));
 });
@@ -62,9 +62,17 @@ router.delete('/:pollID', (req, res) => {
 // vote on a poll
 router.post('/:pollID', (req, res) => {
   // make call to db
-  console.log(req.body);
+  
   const ID = req.params.pollID;
-  // db.Poll.update({ _id: id })
+  const vote = req.body.choice;
+  console.log(vote);
+  
+  db.Poll.update(
+    { _id: ID, "choices.choiceText": vote },
+    { $inc: { "choices.$.votes": 1 } }
+  ).then(poll => console.log(poll))
+
+  res.redirect(`/poll/${ID}`);
 });
 
 module.exports = router;
