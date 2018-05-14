@@ -1,6 +1,6 @@
 extends layout.pug
 
-block content      
+block content    
   .main
     h1 Poll: #{question}
     p By #{author}
@@ -8,9 +8,10 @@ block content
       form( action=`../api/${pollID}` method="post")
         p What do you think?
         .choices
+        - console.log(choices);
           each choice, index in choices
-            - let name = choice.choiceText;
-            - formattedName = name[0].toUpperCase() + name.substr(1);
+            - let name = choice;
+            - let formattedName = name[0].toUpperCase() + name.substr(1);
             .choice
               input(type="radio" id=index name="choice" value=name)
               label(for=name) #{formattedName}
@@ -24,3 +25,46 @@ block scripts
   script(src='https://unpkg.com/axios/dist/axios.min.js')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js')
   script(src="/poll.js")
+  script.
+    console.log([#{choices}], [#{votes}]);
+    let pollChoices = [#{choices}];
+    let pollVotes = [#{votes}];
+    let numberChoices = pollChoices.length;
+    let backgroundColors = [];
+    let borderColors = [];
+    const backgroundColorOptions = [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(255, 206, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+    ];
+    const borderColorOptions = [
+      'rgba(255,99,132,1)',
+      'rgba(54, 162, 235, 1)',
+      'rgba(255, 206, 86, 1)',
+      'rgba(75, 192, 192, 1)',
+      'rgba(153, 102, 255, 1)',
+    ];
+
+    numberChoices !== undefined 
+      ? pollChoices.forEach((item, index) => {
+          backgroundColors.push(backgroundColorOptions[index])
+          borderColors.push(borderColorOptions[index])
+        })
+      : null;
+
+    const ctx = document.getElementById("chartImage").getContext('2d');
+    let myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: pollChoices || 'N/A',
+        datasets: [{
+          label: '# of Votes',
+          data: pollVotes || [0],
+          backgroundColor: backgroundColors,
+          borderColor: borderColors,
+          borderWidth: 1
+        }]
+      },
+    });   
