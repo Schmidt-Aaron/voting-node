@@ -1,3 +1,4 @@
+// adds addition choices up to 5 
 const additionalChoice = () => {
   if (document.querySelectorAll('.choice').length !== 5 ) {
     const choiceNum = document.querySelectorAll('.choice').length + 1;

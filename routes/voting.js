@@ -24,6 +24,7 @@ router.get('/', (req, res) => {
 
 // post a poll
 router.post('/', (req, res) => {
+  console.log(req.body);
   const formData = req.body;
   const pollChoices = parsePollData(formData.choices);
   const pollBody = {

@@ -5,17 +5,17 @@ block content
   h2 Create a New Poll
   form(action="/api" method="post")
     label(for="question") Poll Question
-    input(type="text" name="question" id="question" placeholder="What do you want your poll to ask?")
+    input(type="text" name="question" id="question"  required placeholder="What do you want your poll to ask?")
     label(for="author") Author
-    input(type="text" name="author" id="author" placeholder="Author" value="anonymous")
+    input(type="text" name="author" id="author" required placeholder="Author" value="anonymous")
     p Poll Choices
     .choices
       .choice
         label(for="choice1") Choice #1
-        input(type="text" name="choices[]" id="option1")
+        input(type="text" name="choices[]" id="option1" required)
       .choice
         label(for="choice2") Choice #2
-        input(type="text" name="choices[]" id="option2")
+        input(type="text" name="choices[]" id="option2" required)
     p.addChoice Add Another Choice
     button(type="submit") Submit
 

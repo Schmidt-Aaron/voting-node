@@ -16,7 +16,7 @@ router.get('/:id', (req, res) => {
   db.Poll.findById(req.params.id).then(poll => {
 
     let choices = '';
-    let votes = [];
+    const votes = [];
 
     poll.choices.forEach((item, i) => {
       votes.push(item.votes);
