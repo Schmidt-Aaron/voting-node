@@ -99,13 +99,13 @@ exports.getSinglePollData = (req, res) => {
 exports.deleteSinglePoll = (req, res) => {
   db.Polls.deleteOne({ _id: req.params.pollID })
     .then(() => {
-      res.json(`${req.params.pollID} was deleted.`);
+      console.log(`${req.params.pollID} was deleted.`)
     })
+    .then(res.redirect('/'))
     .catch(err => res.send(err));
 };
 
 exports.vote = (req, res) => {
-  
   const ID = req.params.pollID;
   const vote = req.body.choice;
   console.log(vote);
@@ -115,5 +115,5 @@ exports.vote = (req, res) => {
     { $inc: { "choices.$.votes": 1 } }
   ).then(poll => console.log(poll))
 
-  res.redirect(`/api/poll/${ID}`);
+  res.redirect(`/poll/${ID}`);
 };

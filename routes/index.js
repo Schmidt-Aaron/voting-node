@@ -25,7 +25,7 @@ router.post('/api', voting.addNewPoll);
 router.get('api/:pollID', voting.getSinglePollData);
 
 // delete a poll
-router.delete('/api/:pollID', voting.deleteSinglePoll);
+router.post('/api/remove/:pollID', voting.deleteSinglePoll);
 
 // vote on a poll
 router.post('/api/:pollID', voting.vote);
