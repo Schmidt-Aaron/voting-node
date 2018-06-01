@@ -1,0 +1,17 @@
+mixin pollTitle(poll)
+  li(data-id=`${poll._id}` )
+    a(href=`/poll/${poll._id}`)
+      p #{poll.question} 
+
+//-  const link = document.createElement('a');
+//-   link.setAttribute('href', `/poll/${poll._id}`);
+
+//-   const listItem = document.createElement('li');
+
+//-   // data-id to api calls
+//-   listItem.setAttribute('data-id', poll._id);
+//-   const singlePoll = `${poll.question} <span class="delete">X</span>`;
+//-   listItem.innerHTML = singlePoll;
+
+//-   link.appendChild(listItem);
+//-   pollList.appendChild(link);

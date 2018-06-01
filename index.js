@@ -16,12 +16,6 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// route root
-app.get('/', (req, res) => {
-  // res.sendFile("index.html")
-  res.render('index', { pageTitle: 'Welcome to the Amazing Poll Machine' });
-});
-
 // set up our routes
 app.use('/', routes);
 

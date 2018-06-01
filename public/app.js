@@ -48,4 +48,4 @@ const deletePoll = e => {
 pollList.addEventListener('click', deletePoll);
 
 // fire our polls function on page load
-window.addEventListener('load', getPolls);
+// window.addEventListener('load', getPolls);
