@@ -32,18 +32,27 @@ const pollList = document.querySelector('.polls');
 // };
 
 const deletePoll = e => {
-  e.target.preventDefault();
+  // e.target.preventDefault();
   const poll = e.target;
   const id = poll.parentElement.getAttribute('data-id');
-  if (poll.className === 'delete') {
-    fetch(`/api/remove/${id}` )
-      // .delete(`/api/${id}`)
-      // .then(res => {
-      //   console.log(res.data);
-      //   poll.parentElement.parentElement.removeChild(poll.parentElement);
-      // })
-      .catch(err => console.log(err));
+
+  /*
+    FIX THIS LATER !!!
+  */
+ 
+  if (poll.className === "delete") {
+    // fetch(`api/remove/${id}`, { method: 'PUT'} )
+    .then(res => res.redirect('/'))
   }
+  // if (poll.className === 'delete') {
+  //   fetch(`/api/remove/${id}` )
+  //     // .delete(`/api/${id}`)
+  //     // .then(res => {
+  //     //   console.log(res.data);
+  //     //   poll.parentElement.parentElement.removeChild(poll.parentElement);
+  //     // })
+  //     .catch(err => console.log(err));
+  // }
 };
 
 pollList.addEventListener('click', deletePoll);

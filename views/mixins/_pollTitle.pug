@@ -1,5 +1,5 @@
 mixin pollTitle(poll)
   li(data-id=`${poll._id}` )
-    a(href=`/poll/${poll._id}`)
+    a(class="poll-title" href=`/poll/${poll._id}`)
       p #{poll.question} 
-        span(class="delete") X
+    span(class="delete") X

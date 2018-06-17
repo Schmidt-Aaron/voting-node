@@ -108,7 +108,6 @@ exports.deleteSinglePoll = (req, res) => {
 exports.vote = (req, res) => {
   const ID = req.params.pollID;
   const vote = req.body.choice;
-  console.log(vote);
   
   db.Polls.update(
     { _id: ID, "choices.choiceText": vote },
