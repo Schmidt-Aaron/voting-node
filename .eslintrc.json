@@ -1,11 +1,17 @@
 {
-  "extends": ["airbnb", "prettier"],
+  "extends": ["eslint:recommended", "prettier", "plugin:node/recommended"],
 
   "rules": {
-    "comma-dangle": ["error", "always-multiline"],
-    "no-undef": "warn",
-    "no-undefined": 0,
-    "linebreak-style": [0, "windows"],
-    "no-underscore-dangle": "warn"
+    "no-console": 1
+  },
+  "plugins": ["import", "node"],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
   }
 }
