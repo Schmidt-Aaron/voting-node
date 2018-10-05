@@ -1,14 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const pollSchema = new mongoose.Schema(
   {
     question: {
       type: String,
-      required: 'Poll cannot be blank',
+      required: "Poll cannot be blank"
     },
 
     author: {
-      type: String,
+      type: String
     },
 
     choices: [
@@ -17,19 +17,19 @@ const pollSchema = new mongoose.Schema(
         votes: {
           type: Number,
           required: true,
-          default: 0,
-        },
-      },
+          default: 0
+        }
+      }
     ],
 
     date: {
       type: Date,
-      default: Date.now(),
-    },
+      default: Date.now()
+    }
   },
-  { collection: 'poll' },
+  { collection: "poll" }
 );
 
-const Poll = mongoose.model('Poll', pollSchema);
+const Poll = mongoose.model("Poll", pollSchema);
 
 module.exports = Poll;

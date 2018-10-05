@@ -2,7 +2,7 @@
   "extends": ["eslint:recommended", "prettier", "plugin:node/recommended"],
 
   "rules": {
-    "no-conole": 1
+    "no-console": 1
   },
   "plugins": ["import", "node"],
   "parserOptions": {
@@ -11,7 +11,7 @@
   },
   "env": {
     "es6": true,
-    "broswer": true,
+    "browser": true,
     "node": true
   }
 }
