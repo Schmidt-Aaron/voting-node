@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
-const Polls = mongoose.model('Polls');
-const db = require('../models');
+const mongoose = require("mongoose");
+const Polls = mongoose.model("Polls");
+const db = require("../models");
 
 // helpers - refactor later
 const parsePollData = choiceArr => {
   return choiceArr.map(choice => {
     const obj = {
-      choiceText: choice,
+      choiceText: choice
     };
     return obj;
   });
@@ -20,35 +20,36 @@ const findPoll = id => {
     .catch(err => console.log(err));
 };
 
-
 exports.getPolls = async (req, res) => {
   const pollData = await db.Polls.find();
-    // .then(polls => {
-    //   pollData.push(polls);
-    // })
-    // .catch(err => res.json(err))
+  // .then(polls => {
+  //   pollData.push(polls);
+  // })
+  // .catch(err => res.json(err))
 
-  res.render('index', { pageTitle: 'Welcome to the Amazing Poll Machine', pollData })
+  res.render("index", {
+    pageTitle: "Welcome to the Amazing Poll Machine",
+    pollData
+  });
 };
 
 exports.addNew = (req, res) => {
-  res.render('new', { pageTitle: 'Add a New Poll!' })
-}
+  res.render("new", { pageTitle: "Add a New Poll!" });
+};
 
 exports.renderPollById = (req, res) => {
   db.Polls.findById(req.params.id).then(poll => {
-
-    let choices = '';
+    let choices = "";
     const votes = [];
 
     poll.choices.forEach((item, i) => {
       votes.push(item.votes);
       choices += item.choiceText;
       // add spaces to string - will be split in template
-      if(i !== poll.choices.length - 1) {
+      if (i !== poll.choices.length - 1) {
         choices += " ";
       }
-    })
+    });
 
     const pollObj = {
       pageTitle: poll.question,
@@ -56,9 +57,9 @@ exports.renderPollById = (req, res) => {
       author: poll.author,
       choices,
       votes,
-      pollID: req.params.id,
+      pollID: req.params.id
     };
-    res.render('poll', pollObj);
+    res.render("poll", pollObj);
   });
 };
 
@@ -76,14 +77,14 @@ exports.addNewPoll = (req, res) => {
   const pollBody = {
     question: formData.question,
     author: formData.author,
-    choices: pollChoices,
+    choices: pollChoices
   };
 
   db.Polls.create(pollBody)
     .then(newPoll => {
       // res.status(201).json(newPoll); // uncomment to see json response
       // console.log(newPoll);
-      res.redirect('./');
+      res.redirect("./");
     })
     .catch(err => res.send(err));
 };
@@ -99,20 +100,20 @@ exports.getSinglePollData = (req, res) => {
 exports.deleteSinglePoll = (req, res) => {
   db.Polls.deleteOne({ _id: req.params.pollID })
     .then(() => {
-      console.log(`${req.params.pollID} was deleted.`)
+      console.log(`${req.params.pollID} was deleted.`);
     })
-    .then(res.redirect('/'))
+    .then(res.redirect("/"))
     .catch(err => res.send(err));
 };
 
 exports.vote = (req, res) => {
   const ID = req.params.pollID;
   const vote = req.body.choice;
-  
+
   db.Polls.update(
     { _id: ID, "choices.choiceText": vote },
     { $inc: { "choices.$.votes": 1 } }
-  ).then(poll => console.log(poll))
+  ).then(poll => console.log(poll));
 
   res.redirect(`/poll/${ID}`);
 };
