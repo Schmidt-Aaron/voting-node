@@ -1,11 +1,15 @@
 extends layout.pug
 
+include mixins/_pollTitle
 
 block content
+  - console.log(pollData)
   section.main
     h2 Current Polls
     ul.polls
+      each poll, i in pollData
+        +pollTitle(poll)
 
 block scripts
-  script(src='https://unpkg.com/axios/dist/axios.min.js')
+  //- script(src='https://unpkg.com/axios/dist/axios.min.js')
   script(src='/app.js')

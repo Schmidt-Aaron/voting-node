@@ -5,7 +5,7 @@ block content
     h1 Poll: #{question}
     p By #{author}
     p Options:
-      form( action=`../api/${pollID}` method="post")
+      form( action=`/api/${pollID}` method="post")
         p What do you think?
         .choices
         - let choiceArr = choices.split(" ");
@@ -21,9 +21,9 @@ block content
           
 
 block scripts
-  script(src='https://unpkg.com/axios/dist/axios.min.js')
+  //- script(src='https://unpkg.com/axios/dist/axios.min.js')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js')
-  script(src="/poll.js")
+  script(src="../public/app")
   script.
     let pollChoices = "#{choices}".split(" ");
     let pollVotes = [#{votes}];
