@@ -2,7 +2,7 @@
   "name": "voting-node",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "lint": "eslint '**/*.{js,jsx}' --quiet",
     "format": "prettier --write '**/*.{js,jsx}'"
@@ -27,8 +27,8 @@
     "validator": "^10.8.0"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.10.0",
+    "eslint": "^5.6.1",
+    "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^7.0.1",
     "prettier": "^1.14.3"
