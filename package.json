@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "scripts": {
     "lint": "eslint '**/*.{js,jsx}' --quiet",
     "format": "prettier --write '**/*.{js,jsx}'"
